@@ -16,15 +16,16 @@ The **PackageManagementSource** resource in Windows PowerShell Desired State Con
 PSModule [string] #ResourceName
 {
     Name = [string]
-	[ Ensure = [string] { Absent | Present }  ]
-	[ InstallationPolicy = [string] ]
+    [ Ensure = [string] { Absent | Present }  ]
+    [ InstallationPolicy = [string] ]
     [ ProviderName = [string] ]
     [ SourceUri = [string] ]
-	[ SourceCredential = [PSCredential] ]
+    [ SourceCredential = [PSCredential] ]
 }
 ```
 
 ## Properties
+
 |  Property  |  Description   |
 |---|---|
 | Name| Specifies the name of the package source to be registered or unregistered on your system.|
@@ -41,13 +42,13 @@ This example registers the http://nuget.org package source using the **PackageMa
 ```powershell
 Configuration PackageManagementSourceTest
 {
-	PackageManagementSource SourceRepository
-	{
-		Ensure      = "Present"
-		Name        = "MyNuget"
-		ProviderName= "Nuget"
-		SourceUri   = "http://nuget.org/api/v2/"
-		InstallationPolicy ="Trusted"
-	}
+    PackageManagementSource SourceRepository
+    {
+        Ensure      = "Present"
+        Name        = "MyNuget"
+        ProviderName= "Nuget"
+        SourceUri   = "http://nuget.org/api/v2/"
+        InstallationPolicy ="Trusted"
+    }
 }
 ```

@@ -17,10 +17,10 @@ PackageManagement [string] #ResourceName
 {
     Name = [string]
     [ Source = [string] ]
-	[ Ensure = [string] { Absent | Present }  ]
+    [ Ensure = [string] { Absent | Present }  ]
     [ RequiredVersion = [string] ]
     [ MinimumVersion = [string] ]
-	[ MaximumVersion = [string] ]
+    [ MaximumVersion = [string] ]
     [ SourceCredential = [PSCredential] ]
     [ ProviderName = [string] ]
     [ AdditionalParameters = [Microsoft.Management.Infrastructure.CimInstance[]] ]
@@ -28,6 +28,7 @@ PackageManagement [string] #ResourceName
 ```
 
 ## Properties
+
 |  Property  |  Description   |
 |---|---|
 | Name| Specifies the name of the Package to be installed or uninstalled.|
@@ -42,6 +43,7 @@ PackageManagement [string] #ResourceName
 
 ## Additional Parameters
 The following table lists options for the AdditionalParameters property.
+
 |  Parameter  | Description   |
 |---|---|
 | DestinationPath| Used by providers such as the built-in Nuget Provider. Specifies a file location where you want the package to be installed.|
@@ -56,37 +58,37 @@ Configuration PackageTest
 {
     PackageManagementSource SourceRepository
     {
-		Ensure      = "Present"
-		Name        = "MyNuget"
-		ProviderName= "Nuget"
-		SourceUri   = "http://nuget.org/api/v2/"
-		InstallationPolicy ="Trusted"
+        Ensure      = "Present"
+        Name        = "MyNuget"
+        ProviderName= "Nuget"
+        SourceUri   = "http://nuget.org/api/v2/"
+        InstallationPolicy ="Trusted"
     }
 
-	PackageManagementSource PSGallery
+    PackageManagementSource PSGallery
     {
-		Ensure      = "Present"
-		Name        = "psgallery"
-		ProviderName= "PowerShellGet"
-		SourceUri   = "https://www.powershellgallery.com/api/v2/"
-		InstallationPolicy ="Trusted"
+        Ensure      = "Present"
+        Name        = "psgallery"
+        ProviderName= "PowerShellGet"
+        SourceUri   = "https://www.powershellgallery.com/api/v2/"
+        InstallationPolicy ="Trusted"
     }
 
     PackageManagement NugetPackage
     {
-		Ensure               = "Present"
-		Name                 = "JQuery"
-		AdditionalParameters = "$env:HomeDrive\nuget"
-		RequiredVersion      = "2.0.1"
-		DependsOn            = "[PackageManagementSource]SourceRepository"
+        Ensure               = "Present"
+        Name                 = "JQuery"
+        AdditionalParameters = "$env:HomeDrive\nuget"
+        RequiredVersion      = "2.0.1"
+        DependsOn            = "[PackageManagementSource]SourceRepository"
     }
 
     PackageManagement PSModule
     {
-		Ensure               = "Present"
-		Name                 = "gistprovider"
-		Source               = "PSGallery"
-		DependsOn            = "[PackageManagementSource]PSGallery"
+        Ensure               = "Present"
+        Name                 = "gistprovider"
+        Source               = "PSGallery"
+        DependsOn            = "[PackageManagementSource]PSGallery"
     }
 }
 ```

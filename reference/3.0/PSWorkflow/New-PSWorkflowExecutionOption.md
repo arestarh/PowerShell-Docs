@@ -191,9 +191,9 @@ Accept wildcard characters: False
 ### -AllowedActivity
 Specifies the activities that are permitted to run in the session.
 
-Enter namespace-qualified activity names, such as "Microsoft.Powershell.HyperV.Activities.*".
+Enter namespace-qualified activity names, such as "Microsoft.Powershell.HyperV.Activities.<em>".
 Wildcard characters are supported.
-The default value, **PSDefaultActivities**, includes the built-in Windows Workflow Foundation activities and the activities that represent the Windows PowerShell Core cmdlets.
+The default value, **PSDefaultActivities</em>*, includes the built-in Windows Workflow Foundation activities and the activities that represent the Windows PowerShell Core cmdlets.
 
 ```yaml
 Type: String[]
@@ -462,9 +462,9 @@ You cannot pipe input to this cmdlet.
 * The properties of a session configuration object vary with the options set for the session configuration and the values of those options. Also, session configurations that use a session configuration file have additional properties.
 
   In particular, the properties of session configurations that include a **PSWorkflowExecutionOptions** object vary based on the workflow option values.
-For example, if the session configuration includes a **PSWorkflowExecutionOptions** object that sets a non-default value for the **SessionThrottleLimit** property, the session configuration has a **SessionThrottleLimit** property.
-Otherwise, it does not.
-## RELATED LINKS
+  For example, if the session configuration includes a **PSWorkflowExecutionOptions** object that sets a non-default value for the **SessionThrottleLimit** property, the session configuration has a **SessionThrottleLimit** property.
+  Otherwise, it does not.
+  ## RELATED LINKS
 
 [New-PSWorkflowSession](New-PSWorkflowSession.md)
 

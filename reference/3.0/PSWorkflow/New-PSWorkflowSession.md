@@ -325,7 +325,7 @@ You can pipe a session or a computer name to **New-PSWorkflowSession**.
 
 ## NOTES
 * A **New-PSWorkflowSession** command is equivalent to the following command: `New-PSSession -ConfigurationName Microsoft.PowerShell.Workflow`
-## RELATED LINKS
+  ## RELATED LINKS
 
 [New-PSSession](../Microsoft.PowerShell.Core/New-PSSession.md)
 
