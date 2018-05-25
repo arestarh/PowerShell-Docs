@@ -1,4 +1,4 @@
----
+﻿---
 ms.date:  06/09/2017
 schema:  2.0.0
 locale:  en-us
@@ -67,6 +67,7 @@ title:  Certificate Provider
 
 ```powershell
 Set-Location cert:
+
 ```
 
 #### Example 2
@@ -75,6 +76,7 @@ Set-Location cert:
 
 ```powershell
 Set-Location -Path LocalMachine\Root
+
 ```
 
  If you are not in the Cert: drive, begin the path with the drive name.
@@ -87,6 +89,7 @@ Set-Location -Path LocalMachine\Root
 
 ```powershell
 Get-ChildItem -Path cert:\CurrentUser
+
 ```
 
  If you are in the Cert: drive, you can omit the drive name.
@@ -97,6 +100,7 @@ Get-ChildItem -Path cert:\CurrentUser
 
 ```powershell
 Get-ChildItem -Path cert:\CurrentUser\My
+
 ```
 
  If you are in the Cert: drive, you can omit the drive name.
@@ -107,6 +111,7 @@ Get-ChildItem -Path cert:\CurrentUser\My
 
 ```powershell
 Get-Item -Path cert:\CurrentUser\My | Format-List *
+
 ```
 
 #### Example 4
@@ -117,6 +122,7 @@ Get-Item -Path cert:\CurrentUser\My | Format-List *
 
 ```powershell
 Get-ChildItem -Path cert:\LocalMachine\my\6B8223358119BB08840DEE50FD8AF9EA776CE66B | Format-List -Property *
+
 ```
 
 #### Example 5
@@ -127,6 +133,7 @@ Get-ChildItem -Path cert:\LocalMachine\my\6B8223358119BB08840DEE50FD8AF9EA776CE6
 
 ```powershell
 Get-ChildItem -Path cert:\LocalMachine -Recurse | Format-Table -Property DnsNameList, EnhancedKeyUsageList, NotAfter, SendAsTrustedIssuer
+
 ```
 
 ### Opening the Certificates MMC Snap-in
@@ -137,6 +144,7 @@ Get-ChildItem -Path cert:\LocalMachine -Recurse | Format-Table -Property DnsName
 
 ```powershell
 Invoke-Item cert:\CurrentUser\my\6B8223358119BB08840DEE50FD8AF9EA776CE66B
+
 ```
 
 ### Getting Selected Certificates
@@ -147,6 +155,7 @@ Invoke-Item cert:\CurrentUser\my\6B8223358119BB08840DEE50FD8AF9EA776CE66B
 
 ```powershell
 Get-ChildItem -Path cert: -CodeSigningCert -Recurse
+
 ```
 
 #### Example 2
@@ -155,6 +164,7 @@ Get-ChildItem -Path cert: -CodeSigningCert -Recurse
 
 ```powershell
 Get-ChildItem -Path cert:\LocalMachine\WebHosting -DNSName "*fabrikam*"
+
 ```
 
 #### Example 3
@@ -163,6 +173,7 @@ Get-ChildItem -Path cert:\LocalMachine\WebHosting -DNSName "*fabrikam*"
 
 ```powershell
 Get-ChildItem -Path cert:\LocalMachine\WebHosting -ExpiringInDays 30
+
 ```
 
 #### Example 4
@@ -171,6 +182,7 @@ Get-ChildItem -Path cert:\LocalMachine\WebHosting -ExpiringInDays 30
 
 ```powershell
 Invoke-Command -ComputerName Srv01, Srv02 {Get-ChildItem -Path cert:\* -Recurse -ExpiringInDays 0}
+
 ```
 
 #### Example 5
@@ -181,6 +193,7 @@ Invoke-Command -ComputerName Srv01, Srv02 {Get-ChildItem -Path cert:\* -Recurse 
 
 ```powershell
 Get-ChildItem -Path cert:\LocalMachine\My, cert:\LocalMachine\WebHosting -SSLServerAuthentication
+
 ```
 
 #### Example 6
@@ -189,6 +202,7 @@ Get-ChildItem -Path cert:\LocalMachine\My, cert:\LocalMachine\WebHosting -SSLSer
 
 ```powershell
 Get-ChildItem -Path cert:\* -Recurse  -DNSName "*fabrikam*" -EKU "*Client Authentication*" | Where-Object {$_.SendAsTrustedIssuer -and $_.NotAfter -gt (Get-Date).AddDays.(30)}
+
 ```
 
  The NotAfter property stores the certificate expiration date.
@@ -203,6 +217,7 @@ Get-ChildItem -Path cert:\* -Recurse  -DNSName "*fabrikam*" -EKU "*Client Authen
 
 ```powershell
 Move-Item -Path cert:\LocalMachine\My\5DDC44652E62BF9AA1116DC41DE44AB47C87BDD0 -Destination cert:\LocalMachine\WebHosting
+
 ```
 
 #### Example 2
@@ -213,6 +228,7 @@ Move-Item -Path cert:\LocalMachine\My\5DDC44652E62BF9AA1116DC41DE44AB47C87BDD0 -
 
 ```powershell
 Get-ChildItem -Path cert:\LocalMachine\My -SSLServerAuthentication | Move-Item -Destination cert:\LocalMachine\WebHosting
+
 ```
 
 ### Deleting Certificates and Private Keys
@@ -225,6 +241,7 @@ Get-ChildItem -Path cert:\LocalMachine\My -SSLServerAuthentication | Move-Item -
 
 ```powershell
 Remove-Item -Path cert:\LocalMachine\CA\5DDC44652E62BF9AA1116DC41DE44AB47C87BDD0
+
 ```
 
 #### Example 2
@@ -251,6 +268,7 @@ Set-Item -Path WSMan:\S1\Service\Auth\CredSSP -Value $true
 $s  = New-PSSession S1 -Authentication CredSSP -Credential Domain01\Admin01
 
 Invoke-Command -Session $s { Remove-Item cert:\LocalMachine\My\D2D38EBA60CAA1C12055A2E1C83B15AD450110C2 -DeleteKey  }
+
 ```
 
 #### Example 3
@@ -261,6 +279,7 @@ Invoke-Command -Session $s { Remove-Item cert:\LocalMachine\My\D2D38EBA60CAA1C12
 
 ```powershell
 Get-ChildItem -Path cert:\LocalMachine\WebHosting -ExpiringInDays 0 | Remove-Item -DeleteKey
+
 ```
 
 #### Example 4
@@ -271,6 +290,7 @@ Get-ChildItem -Path cert:\LocalMachine\WebHosting -ExpiringInDays 0 | Remove-Ite
 
 ```powershell
 Get-ChildItem -Path cert:\LocalMachine -DnsName *Fabrikam* | Remove-Item
+
 ```
 
 ### Creating Certificate Stores
@@ -283,6 +303,7 @@ Get-ChildItem -Path cert:\LocalMachine -DnsName *Fabrikam* | Remove-Item
 
 ```powershell
 New-Item -Path cert:\LocalMachine\CustomStore
+
 ```
 
  The command returns a System.Security.Cryptography.X509Certificates.X509Store that represents the new certificate store.
@@ -295,6 +316,7 @@ New-Item -Path cert:\LocalMachine\CustomStore
 
 ```powershell
 Invoke-Command -ComputerName Server01 { New-Item -Path cert:\LocalMachine\CustomStore }
+
 ```
 
  The command returns a System.Security.Cryptography.X509Certificates.X509Store that represents the new certificate store.
@@ -311,6 +333,7 @@ Invoke-Command -ComputerName Server01 { New-Item -Path cert:\LocalMachine\Custom
 
 ```powershell
 Remove-Item -Path cert:\LocalMachine\TestStore -Recurse
+
 ```
 
  If the certificate store contains certificates and you omit the Recurse parameter, Remove-Item prompts you for confirmation before deleting any items.
@@ -321,6 +344,7 @@ Remove-Item -Path cert:\LocalMachine\TestStore -Recurse
 
 ```powershell
 Invoke-Command -ComputerName S1, S2 { Remove-Item -Path cert:\LocalMachine\TestStore  -Recurse}
+
 ```
 
 #### Example 3
@@ -329,6 +353,7 @@ Invoke-Command -ComputerName S1, S2 { Remove-Item -Path cert:\LocalMachine\TestS
 
 ```powershell
 Remove-Item -Path cert:\LocalMachine\*test* -Recurse
+
 ```
 
 ## DYNAMIC PARAMETERS

@@ -590,6 +590,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+
 ```
 
 ### -SessionVariable
@@ -620,6 +621,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+
 ```
 ### -SkipCertificateCheck
 Skips certificate validation checks. This includes all validations such as expiration, revocation, trusted root authority, etc.

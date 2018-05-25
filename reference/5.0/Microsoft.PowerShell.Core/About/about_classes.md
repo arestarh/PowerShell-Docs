@@ -130,6 +130,7 @@ $device
 Brand     Model         VendorSku
 -----     -----         ---------
 Microsoft Surface Pro 4 5072641000
+
 ```
 
 ### EXAMPLE: Complex types in class properties
@@ -166,6 +167,8 @@ Model     :
 VendorSku :
 AssetId   :
 Devices   : {$null, $null, $null, $null...}
+
+
 ```
 
 ## CLASS METHODS
@@ -244,6 +247,7 @@ Devices   : {$null, $null, Microsoft|Surface Pro 4|5072641000, $null...}
 5
 6
 7
+
 ```
 
 ## OUTPUT IN CLASS METHODS
@@ -302,6 +306,7 @@ $ints.SayHello()
 7
 9
 Hello World
+
 ```
 
 ## CONSTRUCTOR
@@ -351,6 +356,7 @@ $surface
 Brand     Model         VendorSku
 -----     -----         ---------
 Microsoft Surface Pro 4 5072641000
+
 ```
 
 ### EXAMPLE: Multiple Constructors
@@ -396,6 +402,7 @@ Brand     Model         VendorSku
 -----     -----         ---------
 Undefined
 Microsoft Surface Pro 4 5072641000
+
 ```
 
 ## HIDDEN ATTRIBUTE
@@ -454,6 +461,7 @@ Brand     Model         Devices
 Microsoft Surface Pro 4 {$null, $null, $null, $null...}
 16
 16
+
 ```
 
 Notice `Slots` property is not reported in `$r1` output; but, the size was
@@ -576,6 +584,7 @@ Write-Output "Testing dev"
 $dev
 
 $dev.Brand = ""
+
 ```
 
 ```output
@@ -732,6 +741,7 @@ Hostname            : r1s015
 Status              : Installed
 Brand               : Fabrikam, Inc.
 Model               : Fbk5040
+
 ```
 
 ## CALLING BASE CLASS CONSTRUCTORS

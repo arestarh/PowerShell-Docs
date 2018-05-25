@@ -1,4 +1,4 @@
----
+﻿---
 ms.date:  06/09/2017
 schema:  2.0.0
 locale:  en-us
@@ -13,6 +13,7 @@ Creates a new item.
 
 ```
 New-Item [-ParamName <string>] [-ParamValue <string>] [-Confirm] [-WhatIf] [<CommonParameters>]
+
 ```
 
 ## Description
@@ -96,6 +97,7 @@ New-Item -Path WSMan:\localhost\Plugin\TestPlugin\InitializationParameters -Para
 
 ```output
 This command creates an Initialization parameter named testparametername in the InitializationParameters directory.
+
 ```
 
 ## See Also

@@ -13,6 +13,7 @@ Creates a new item.
 
 ```
 New-Item [-ResourceURI <Uri>] [-SupportsOptions] [-ExactMatch] [-Capability <string>] [-Confirm] [-WhatIf] [<CommonParameters>]
+
 ```
 
 ## Description
@@ -132,6 +133,7 @@ New-Item [-ResourceURI <Uri>] [-SupportsOptions] [-ExactMatch] [-Capability <str
 C:\PS>New-Item -Path WSMan:\localhost\Plugin\TestPlugin\Resources -ResourceUri http://schemas.dmtf.org/wbem/wscim/3/cim-schema -Capability "Enumerate"
 
 This command creates a resource entry in the Resources directory of TestPlugin.
+
 ```
 
 ## See Also

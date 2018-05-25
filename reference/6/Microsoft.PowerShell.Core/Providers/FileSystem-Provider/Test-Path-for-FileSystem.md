@@ -14,6 +14,7 @@ Determines whether all elements of a file or directory path exist.
 
 ```
 Test-Path [-NewerThan <DateTime>] [-OlderThan <DateTime>] [<CommonParameters>]
+
 ```
 
 ## Description
@@ -68,6 +69,7 @@ C:\PS>Test-Path -Path "C:\Documents and Settings\NicoleH"
 Description
 -----------
 This command tells whether all elements in the path exist, that is, the C: directory, the Documents and Settings directory, and the NicoleH directory. If any are missing, the cmdlet returns FALSE. Otherwise, it returns TRUE.
+
 ```
 
 ## Example 2
@@ -84,6 +86,7 @@ These commands test the path to the Windows PowerShell profile.
 The first command determines whether all elements in the path exist. The second command determines whether the syntax of the path is correct. In this case, the path is FALSE, but the syntax is correct (TRUE). These commands use $profile, the automatic variable that points to the location for the profile, even if the profile does not exist.
 
 For more information about automatic variables, see about_Automatic_Variables.
+
 ```
 
 ## Example 3
@@ -100,6 +103,7 @@ The command uses the Path parameter to specify the path. Because it includes a s
 The command uses the Exclude parameter to specify files that will be omitted from the evaluation.
 
 In this case, because the directory contains only .dwg files, the result is FALSE.
+
 ```
 
 ## Example 4
@@ -110,6 +114,7 @@ C:\PS>Test-Path -Path $profile -PathType Leaf
 Description
 -----------
 This command tells whether the path stored in the $profile variable leads to a file. In this case, because the Windows PowerShell profile is a .ps1 file, the cmdlet returns TRUE.
+
 ```
 
 ## Example 5
@@ -129,6 +134,7 @@ These commands use the Test-Path cmdlet with the Windows PowerShell registry pro
 The first command tests whether the registry path to the Microsoft.PowerShell registry key is correct on the system. If Windows PowerShell is installed correctly, the cmdlet returns TRUE.
 
 Test-Path does not work correctly with all Windows PowerShell providers. For example, you can use Test-Path to test the path to a registry key, but if you use it to test the path to a registry entry, it always returns FALSE, even if the registry entry is present.
+
 ```
 
 ## Example 6
@@ -141,6 +147,7 @@ Description
 This command uses the NewerThan dynamic parameter to determine whether the PowerShell.exe file on the computer is newer than July 13, 2009.
 
 The NewerThan parameter works only in file system drives.
+
 ```
 
 ## See Also

@@ -14,6 +14,7 @@ Creates a new item.
 
 ```
 New-Item [-URI <Uri>] [-SDDL <string>] [-ExactMatch] [-Confirm] [-WhatIf] [<CommonParameters>]
+
 ```
 
 ## Description
@@ -100,6 +101,7 @@ New-Item [-URI <Uri>] [-SDDL <string>] [-ExactMatch] [-Confirm] [-WhatIf] [<Comm
 C:\PS>New-Item -path WSMan:\localhost\Plugin\TestPlugin\Resources\Resource_5967683\Security -Sddl "O:NSG:BAD:P(A;;GA;;;BA)S:P(AU;FA;GA;;;WD)(AU;SA;GWGX;;;WD)"
 
 This command creates a security entry in the Security directory of Resource_5967683 (a specific resource).
+
 ```
 
 ## See Also

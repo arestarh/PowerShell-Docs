@@ -158,6 +158,7 @@ title:  WSMan Provider
 
 ```
 Set-Location WSMan:
+
 ```
 
 #### Example 2
@@ -165,6 +166,7 @@ Set-Location WSMan:
 
 ```
 Set-Location -Path Localhost
+
 ```
 
  If you are not in the WSMan: drive, begin the path with the drive name.
@@ -174,6 +176,7 @@ Set-Location -Path Localhost
 
 ```
 Set-Location -Path  WSMan:\SERVER01
+
 ```
 
  If you are not in the WSMan: drive, begin the path with the drive name.
@@ -186,6 +189,7 @@ The above command assume that a connection to the remote system already exists. 
 
 ```
 Set-Location -Path Localhost\Client
+
 ```
 
  If you are not in the WSMan: drive, begin the path with the drive name.
@@ -197,6 +201,7 @@ Set-Location -Path Localhost\Client
 
 ```
 get-childitem -path WSMan:\Localhost
+
 ```
 
  If you are in the WSMan: drive, you can omit the drive name.
@@ -206,6 +211,7 @@ get-childitem -path WSMan:\Localhost
 
 ```
 get-childitem -path WSMan:\SERVER01
+
 ```
 
  If you are in the WSMan: drive, you can omit the drive name.
@@ -218,6 +224,7 @@ The above command assume that a connection to the remote system already exists. 
 
 ```
 get-childitem -path WSMan:\
+
 ```
 
  If you are in the WSMan: drive, you can omit the drive name.
@@ -227,6 +234,7 @@ get-childitem -path WSMan:\
 
 ```
 Get-Childitem
+
 ```
 
  The above command returns a list of properties and containers.  For example:
