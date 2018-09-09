@@ -84,7 +84,7 @@ The commands that you enter run in the new session, and the results are returned
 ### Example 2
 
 ```
-PS> Enter-PSSession -Computer Server01
+PS> Enter-PSSession -ComputerName Server01
 [Server01]: PS>
 [Server01]: PS> Get-Process Powershell > C:\ps-test\Process.txt
 [Server01]: PS> exit
@@ -509,7 +509,7 @@ However, they do not take precedence over maximum values, quotas or limits set i
 
 For a description of the session options, including the default values, see New-PSSessionOption.
 For information about the **$PSSessionOption** preference variable, see [about_Preference_Variables](About/about_Preference_Variables.md).
-For more information about session configurations, see about_Session_Configurations (http://go.microsoft.com/fwlink/?LinkID=145152).
+For more information about session configurations, see [about_Session_Configurations](About/about_Session_Configurations.md).
 
 ```yaml
 Type: PSSessionOption

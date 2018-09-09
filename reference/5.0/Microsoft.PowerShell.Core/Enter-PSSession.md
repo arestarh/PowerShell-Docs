@@ -86,7 +86,7 @@ The commands that you enter run in the new session, and the results are returned
 ### Example 2: Work with an interactive session
 ```
 The first command uses the **Enter-PSSession** cmdlet to start an interactive session with Server01, a remote computer. When the session starts, the command prompt changes to include the computer name.
-PS C:\> Enter-PSSession -Computer Server01
+PS C:\> Enter-PSSession -ComputerName Server01
 [Server01]: PS C:\>
 
 The second command gets the Windows PowerShell process and redirects the output to the Process.txt file. The command is submitted to the remote computer, and the file is saved on the remote computer.
@@ -514,7 +514,7 @@ However, they do not take precedence over maximum values, quotas or limits set i
 
 For a description of the session options, including the default values, see **New-PSSessionOption**.
 For information about the $PSSessionOption preference variable, see [about_Preference_Variables](About/about_Preference_Variables.md).
-For more information about session configurations, see about_Session_Configurations (http://go.microsoft.com/fwlink/?LinkID=145152).
+For more information about session configurations, see [about_Session_Configurations](About/about_Session_Configurations.md).
 
 ```yaml
 Type: PSSessionOption

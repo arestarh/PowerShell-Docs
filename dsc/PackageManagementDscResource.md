@@ -5,9 +5,9 @@ title:  DSC PackageManagement Resource
 ---
 # DSC PackageManagement Resource
 
-> Applies To: Windows PowerShell 4.0, Windows PowerShell 5.0, Windows PowerShell 5.1
+Applies To: Windows PowerShell 4.0, Windows PowerShell 5.0, Windows PowerShell 5.1
 
-The **PackageManagement** resource in Windows PowerShell Desired State Configuration (DSC) provides a mechanism to install or uninstall Package Management packages on a target node. This resource requires the **PackageManagement** module, available from http://PowerShellGallery.com.
+The **PackageManagement** resource in Windows PowerShell Desired State Configuration (DSC) provides a mechanism to install or uninstall Package Management packages on a target node. This resource requires the **PackageManagement** module, available from [http://PowerShellGallery.com](http://PowerShellGallery.com).
 
 > [!IMPORTANT]
 > The **PackageManagement** module should be at least version 1.1.7.0 for the following property information to be correct.
@@ -33,8 +33,8 @@ PackageManagement [string] #ResourceName
 
 ## Properties
 
-|  Property  |  Description   |
-|---|---|
+| Property | Description |
+| --- | --- |
 | Name| Specifies the name of the Package to be installed or uninstalled.|
 | AdditionalParameters| Provider specific hashtable of parameters that would be passed to `Get-Package -AdditionalArguments`. For example, for NuGet provider you can pass additional parameters like DestinationPath.|
 | Ensure| Determines whether the package is to be installed or uninstalled.|
@@ -48,10 +48,11 @@ PackageManagement [string] #ResourceName
 ## Additional Parameters
 
 The following table lists options for the AdditionalParameters property.
-|  Parameter  | Description   |
-|---|---|
+
+| Parameter | Description |
+| --- | --- |
 | DestinationPath| Used by providers such as the built-in Nuget Provider. Specifies a file location where you want the package to be installed.|
-| InstallationPolicy| Used by providers such as the built-in Nuget Provider. Determines whether you trust the package's source. One of: "Untrusted", "Trusted".|
+| InstallationPolicy| Used by providers such as the built-in Nuget Provider. Determines whether you trust the package's source. One of: `Untrusted`, `Trusted`.|
 
 ## Example
 

@@ -5,7 +5,9 @@
                 "**/**.md",
                 "**/**.yml"
             ],
-            "exclude": ["**/obj/**"]
+            "exclude": [
+                "**/obj/**"
+            ]
         }],
         "globalMetadata": {
             "breadcrumb_path": "bread/toc.yml",
@@ -26,9 +28,12 @@
             "files": [
                 "**/images/**"
             ],
-            "exclude": ["**/obj/**"]
+            "exclude": [
+                "**/obj/**"
+            ]
         }],
         "template": "op.html",
-        "dest": "jea"
+        "dest": "jea",
+        "markdownEngineName": "markdig"
     }
 }

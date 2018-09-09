@@ -134,12 +134,12 @@ Feature 5
 
 #>
 
-#Requires -Module Module1
-#Requires -Module Module2
-#Requires -Module RequiredModule1
-#Requires -Module @{ModuleName = 'RequiredModule2'; ModuleVersion = '1.0'}
-#Requires -Module @{RequiredVersion = '2.0'; ModuleName = 'RequiredModule3'}
-#Requires -Module ExternalModule1
+#Requires -Modules Module1
+#Requires -Modules Module2
+#Requires -Modules RequiredModule1
+#Requires -Modules @{ModuleName = 'RequiredModule2'; ModuleVersion = '1.0'}
+#Requires -Modules @{RequiredVersion = '2.0'; ModuleName = 'RequiredModule3'}
+#Requires -Modules ExternalModule1
 
 <#
 
@@ -371,7 +371,7 @@ Accept wildcard characters: False
 
 ### -RequiredModules
 Specifies modules that must be in the global session state.
-If the required modules are not in the global session state, Windows PowerShell imports them.
+If the required modules are not in the global session state, PowerShell imports them.
 
 ```yaml
 Type: Object[]

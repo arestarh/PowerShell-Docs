@@ -112,6 +112,9 @@ substring become part of the substring.
 
 ```powershell
 'Chocolate-Vanilla-Strawberry-Blueberry' -split '(-)', 3
+```
+
+```output
 Chocolate
 -
 Vanilla
@@ -139,7 +142,7 @@ $c = "Mercury,Venus,Earth,Mars,Jupiter,Saturn,Uranus,Neptune"
 $c -split ",", 5
 ```
 
-```Output
+```output
 Mercury
 Venus
 Earth
@@ -159,7 +162,7 @@ $c = "Mercury,Venus,Earth,Mars,Jupiter,Saturn,Uranus,Neptune"
 $c -split {$_ -eq "e" -or $_ -eq "p"}
 ```
 
-```Output
+```output
 M
 rcury,V
 nus,
@@ -204,13 +207,21 @@ The RegexMatch options are:
 - IgnorePatternWhitespace: Ignores unescaped whitespace and
   comments marked with the number sign (#). Valid only with
   RegexMatch.
-- **Multiline**: Multiline mode recognizes the start and end of lines
-  and strings. Valid only with RegexMatch. Singleline is the default.
-- **Singleline**: Singleline mode recognizes only the start and end of
-  strings. Valid only with RegexMatch. Singleline is the default.
+- **Multiline**: Multiline mode forces `^` and `$` to match the beginning
+  end of every line instead of the beginning and end of the input string.
+- **Singleline**: Singleline mode treats the input string as a *SingleLine*.
+  It forces the `.` character to match every character (including newlines),
+  instead of matching every character EXCEPT the newline `\n`.
 - **ExplicitCapture**: Ignores non-named match groups so that only
   explicit capture groups are returned in the result list. Valid
   only with RegexMatch.
+
+> [!NOTE]
+> SingleLine is the default behavior. Singleline and Multiline
+> cannot be used together with the options parameter. This was resolved in
+> PowerShell 6.0.
+> The work around is by using *Mode-Modifiers* in your regular expression.
+> You can read more about mode modifiers in [Regular Expression Options](/dotnet/standard/base-types/regular-expression-options)
 
 ## UNARY and BINARY SPLIT OPERATORS
 
@@ -228,25 +239,31 @@ Use one of the following patterns to split more than one string:
 Consider the following example:
 
 ```
-PS > -split "1 2", "a b"
+PS> -split "1 2", "a b"
 1
 2
 a b
+```
 
-PS > "1 2", "a b" -split " "
+```
+PS> "1 2", "a b" -split " "
 1
 2
 a
 b
+```
 
-PS > -split ("1 2", "a b")
+```
+PS> -split ("1 2", "a b")
 1
 2
 a
 b
+```
 
-PS > $a = "1 2", "a b"
-PS > -split $a
+```
+PS> $a = "1 2", "a b"
+PS> -split $a
 1
 2
 a
@@ -261,7 +278,7 @@ The following statement splits the string at whitespace.
 -split "Windows PowerShell 2.0`nWindows PowerShell with remoting"
 ```
 
-```Output
+```output
 
 Windows
 PowerShell
@@ -278,7 +295,7 @@ The following statement splits the string at any comma.
 "Mercury,Venus,Earth,Mars,Jupiter,Saturn,Uranus,Neptune" -split ','
 ```
 
-```Output
+```output
 Mercury
 Venus
 Earth
@@ -295,7 +312,7 @@ The following statement splits the string at the pattern "er".
 "Mercury,Venus,Earth,Mars,Jupiter,Saturn,Uranus,Neptune" -split 'er'
 ```
 
-```Output
+```output
 M
 cury,Venus,Earth,Mars,Jupit
 ,Saturn,Uranus,Neptune
@@ -307,7 +324,7 @@ The following statement performs a case-sensitive split at the letter "N".
 "Mercury,Venus,Earth,Mars,Jupiter,Saturn,Uranus,Neptune" -cSplit 'N'
 ```
 
-```Output
+```output
 Mercury,Venus,Earth,Mars,Jupiter,Saturn,Uranus,
 eptune
 ```
@@ -318,7 +335,7 @@ The following statement splits the string at "e" and "t".
 "Mercury,Venus,Earth,Mars,Jupiter,Saturn,Uranus,Neptune" -split '[et]'
 ```
 
-```Output
+```output
 M
 rcury,V
 nus,
@@ -338,7 +355,7 @@ resulting substrings to six substrings.
 "Mercury,Venus,Earth,Mars,Jupiter,Saturn,Uranus,Neptune" -split '[er]', 6
 ```
 
-```Output
+```output
 M
 
 cu
@@ -353,7 +370,7 @@ The following statement splits a string into three substrings.
 "a,b,c,d,e,f,g,h" -split ",", 3
 ```
 
-```Output
+```output
 a
 b
 c,d,e,f,g,h
@@ -366,7 +383,7 @@ The following statement splits two strings into three substrings.
 "a,b,c,d", "e,f,g,h" -split ",", 3
 ```
 
-```Output
+```output
 a
 b
 c,d
@@ -392,7 +409,7 @@ $a = @'
 $a -split "^\d", 0, "multiline"
 ```
 
-```Output
+```output
 
 The first line.
 
@@ -401,13 +418,27 @@ The second line.
 The third of three lines.
 ```
 
-The following statement uses the SimpleMatch option to direct the -split
-operator to interpret the dot (.) delimiter literally.
+The following statement uses the backslash character to escape the dot (.)
+delimiter.
 
 With the default, RegexMatch, the dot enclosed in quotation marks (".") is
 interpreted to match any character except for a newline character. As a
 result, the Split statement returns a blank line for every character except
 newline.
+
+```powershell
+"This.is.a.test" -split "\."
+```
+
+```output
+This
+is
+a
+test
+```
+
+The following statement uses the SimpleMatch option to direct the -split
+operator to interpret the dot (.) delimiter literally.
 
 The 0 represents the "return all" value of the Max-substrings parameter. You
 can use options, such as SimpleMatch, only when the Max-substrings value is
@@ -417,7 +448,7 @@ specified.
 "This.is.a.test" -split ".", 0, "simplematch"
 ```
 
-```Output
+```output
 This
 is
 a
@@ -430,12 +461,12 @@ on the value of a variable.
 ```powershell
 $i = 1
 $c = "LastName, FirstName; Address, City, State, Zip"
-$c -split {if ($i -lt 1) {$-eq ","} else {$-eq ";"}}
+$c -split $(if ($i -lt 1) {","} else {";"})
 ```
 
-```Output
+```output
 LastName, FirstName
-Address, City, State, Zip
+ Address, City, State, Zip
 ```
 
 ## SEE ALSO
